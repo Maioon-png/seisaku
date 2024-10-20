@@ -54,6 +54,16 @@
                 </h1>
             </div>
 
+            <form method="GET" action="{{ url('/') }}" id="sort_form" >
+                @csrf
+                <select class="search_content_sort" id="search_content_sort" name="sort_option">
+                    <option value="">並び替え：評価高/低</option>
+                    @foreach (App\Models\Shop::SORT_LIST as $key => $value)
+                    <option value="{{ $key }}" @if($sort_option==$key) selected @endif>{{ $value }}</option>
+                    @endforeach
+                </select>
+            </form>
+
             <!-- 検索メニュー -->
             <form method="GET" action="{{ route('shop.index') }}">
                 <div class="search_content">
@@ -83,6 +93,12 @@
             ham.addEventListener('click', function() {
                 ham.classList.toggle('active');
                 nav.classList.toggle('active');
+            });
+
+            var sort_select_box = document.getElementById('search_content_sort');
+            var sort_form = document.getElementById('sort_form');
+            sort_select_box.addEventListener('change', function() {
+                sort_form.submit();
             });
         </script>
     </header>
