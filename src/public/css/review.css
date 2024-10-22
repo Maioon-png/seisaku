@@ -122,9 +122,14 @@
     font-size: larger;
 }
 
-.star {
+.star_box {
     margin: 5px;
     font-size: x-large;
+}
+
+.star_mark {
+    font-size: 300%;
+    color: #a09a9a;
 }
 
 .content {
